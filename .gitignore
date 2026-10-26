@@ -1,0 +1,13 @@
+# 依赖
+node_modules/
+
+# 构建与环境
+.DS_Store
+*.log
+
+# 工具链产物，不应进仓库
+.workbuddy/
+*.genie
+
+# 本地调试
+/tmp/

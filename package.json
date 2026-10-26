@@ -1,0 +1,21 @@
+{
+  "name": "zai-lushu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "在路书 · 旅行路书 — 纯本地存储的旅行计划本",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node scripts/serve.mjs 8765",
+    "test": "node scripts/selftest.mjs",
+    "build": "node scripts/build.mjs",
+    "test:e2e": "node scripts/e2e.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "puppeteer-core": "^24.0.0"
+  }
+}

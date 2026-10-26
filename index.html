@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="在路书">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="在路书 · 旅行路书。想去、待出发、走过的，一页页记下来。数据只存本机。">
+<title>在路书 · 旅行路书</title>
+
+<!-- 给任何 AI 看的机器可读入口：人类打开是 App，AI 读取的是这份协议 -->
+<link rel="alternate" type="text/plain" href="ai.txt" title="路书 · AI 导入协议">
+<link rel="alternate" type="text/html" href="ai.html" title="路书 · AI 导入协议（网页版，编码更保险）">
+<link rel="ai-instructions" href="ai.txt">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "路书",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any (Web Browser, Mobile First)",
+  "description": "纯本地存储的旅行路书应用，把旅行记录分为「路上」「想去」「回顾」三种状态。支持通过 URL 参数导入 AI 生成的结构化行程数据。",
+  "featureList": [
+    "三大板块：路上（已确定攻略）、想去（收集的目的地，按城市自动分类）、回顾（已结束的行程）",
+    "数据仅存于使用者设备的浏览器本地，不上传任何服务器",
+    "任何 AI 均可读取 /ai.txt 生成合规的导入链接"
+  ],
+  "potentialAction": {
+    "@type": "CreateAction",
+    "name": "添加一条路书",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{origin}/#/add?d={encodedJson}",
+      "encodingType": "application/x-www-form-urlencoded",
+      "contentType": "application/json"
+    }
+  },
+  "softwareHelp": {
+    "@type": "CreativeWork",
+    "url": "/ai.txt",
+    "name": "AI 导入协议说明"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="css/app.css?v=20261026n">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- 分享卡片预览 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="在路书 · 旅行路书">
+<meta property="og:description" content="想去、待出发、走过的，一页页记下来。数据只存本机。">
+<meta property="og:image" content="icon-512.png">
+</head>
+<body>
+  <div id="app" class="app"></div>
+  <div id="layer" class="layer"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <!-- 打包成单文件：避免旧缓存导致改完看不到（版本号随每次构建更新） -->
+  <script type="module" src="bundle.js?v=20261026n"></script>
+</body>
+</html>

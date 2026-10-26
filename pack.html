@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F7F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex">
+<title>路书 · 数据包</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  :root{
+    --bg:#F7F4EE; --card:#fff; --text:#1C1A17; --text2:#55504A; --muted:#928B7F;
+    --line:#E6E0D5; --accent:#E4613C;
+    --shadow:0 1px 2px rgba(28,26,23,.05), 0 8px 24px -12px rgba(28,26,23,.16);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#121110; --card:#1E1D1A; --text:#F2EFE9; --text2:#BDB6AA;
+           --muted:#857D71; --line:#302E29; --accent:#FF7A52;
+           --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6); }
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; padding:calc(env(safe-area-inset-top,0px) + 24px) 18px 48px;
+    background:var(--bg); color:var(--text);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:520px; margin:0 auto; }
+  h1{ font-size:25px; font-weight:750; letter-spacing:-.03em; margin:0 0 5px; }
+  .sub{ font-size:13px; color:var(--muted); margin-bottom:22px; line-height:1.65; }
+  .card{
+    display:flex; gap:0; align-items:stretch; width:100%; text-align:left;
+    background:var(--card); border:0; border-radius:20px; padding:0;
+    box-shadow:var(--shadow); overflow:hidden; margin-bottom:13px;
+    color:inherit; font:inherit; cursor:pointer;
+    transition:transform .16s cubic-bezier(.2,.8,.3,1);
+  }
+  .card:active{ transform:scale(.983); }
+  .cover{ width:92px; flex:none; display:grid; place-items:center; font-size:34px;
+          filter:brightness(1); text-shadow:0 2px 8px rgba(0,0,0,.2); }
+  .body{ flex:1; min-width:0; padding:14px 14px 14px 15px; }
+  .title{ font-size:16px; font-weight:670; letter-spacing:-.015em; }
+  .meta{ font-size:12.5px; color:var(--muted); margin-top:4px; }
+  .note{ font-size:11.5px; color:var(--accent); margin-top:7px; font-weight:560; }
+  .arrow{ display:grid; place-items:center; padding-right:14px; color:var(--muted);
+          font-size:24px; font-weight:300; }
+  .hint{
+    margin-top:22px; padding:13px 15px; border-radius:13px;
+    background:var(--card); font-size:12.5px; color:var(--text2); line-height:1.7;
+    box-shadow:var(--shadow);
+  }
+  .hint b{ color:var(--text); }
+  .done{
+    position:fixed; left:50%; bottom:34px; transform:translate(-50%,14px);
+    background:rgba(28,26,23,.93); color:#fff; padding:10px 18px; border-radius:99px;
+    font-size:13.5px; opacity:0; pointer-events:none; transition:.24s;
+  }
+  .done.show{ opacity:1; transform:translate(-50%,0); }
+  @media (prefers-color-scheme: dark){ .done{ background:rgba(242,239,233,.94); color:#1C1A17; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>路书 · 数据包</h1>
+  <div class="sub">四组已经写好的内容。点一个，跳到导入确认页，确认后才会写进你手机的本地存储。</div>
+  
+  <button class="card" data-i="0" data-d="W3sidGl0bGUiOiLljZfmnoEgMjAg5aSpIMK3IOS7juadreW3nuWIsOeZveiJsuWkp-mZhiIsImNpdHkiOiLljZfmnoEiLCJzdGF0dXMiOiJwbGFubmluZyIsInN0YXJ0RGF0ZSI6IjIwMjYtMTItMDEiLCJlbmREYXRlIjoiMjAyNi0xMi0yMCIsImJyaWVmIjoi5p2t5bee5Ye65Y-R77yM57uP5biD5a6c6K-65pav6Im-5Yip5pav6L2s5LmM5pav5oCA5Lqa55m76Ii577yM56m_6LaK5b636Zu35YWL5rW35bOh6L-b5Y2X5p6B5Y2K5bKb44CCMTIg5pyI5piv5LyB6bmF5Lqn5LuU5a2j44CCIiwiYmxvY2tzIjpbeyJ0eXBlIjoidGV4dCIsInRpdGxlIjoi6Lev57q_6aqo5p62IiwiYm9keSI6IuS4ieauteW8j--8muWbveWGhemjnuWNl-e-ju-8iOe6piAzMCDlsI_ml7bvvInihpIg5LmM5pav5oCA5Lqa55m76Ii5IOKGkiDlvrfpm7flhYvmtbfls6HlvoDov5QgKyDljZfmnoHljYrlspsgNSDlpKnnmbvpmYbjgIJcbuiIueS4iiAxMCDlpKnvvIzliY3lkI7lkIQgNSDlpKnlnKjot6_kuIrvvIzkuK3pl7TkuI3nlZnnoazovazmnLrvvIznu5nljZfnvo7mrrXlu7bor6_nlZnkvZnph4_jgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjEsInRpdGxlIjoi5p2t5beeIOKGkiDkuIrmtbcg4oaSIOi9rOacuiIsImJvZHkiOiIxMi8wMSDmna3lt57kuJzlnZDpq5jpk4HliLDmtabkuJzvvIzmmZrnj63mnLrnu4_lpJrlk4jmiJbkuprnmoTmlq_kuprotJ3lt7TovazluIPlrpzor7rmlq_oib7liKnmlq_jgILooYzmnY7nm7TmjILvvIzovazmnLrnlZkgMyDlsI_ml7bku6XkuIrjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjIsInRpdGxlIjoi6aOe6KGM5LitIiwiYm9keSI6IjEyLzAyIOWFqOeoi-e6piAzMCDlsI_ml7bvvIzot6jotoogMTEg5Liq5pe25Yy644CC5py65LiK5oyJ55uu55qE5Zyw55qE5L2c5oGv552h77yM6JC95Zyw5bCR5Y-X572q44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5IjozLCJ0aXRsZSI6IuaKtei-vuW4g-WunOivuuaWr-iJvuWIqeaWryIsImJvZHkiOiIxMi8wMyDkuIrljYjokL3lnLDjgILlhYjlm57phZLlupfmlL7ooYzmnY7vvIzkuIvljYjljrvkupTmnIjlub_lnLrjgIHljZrljaHljLrjgILmmZrkuIrml6nnnaHvvIzlgJLml7blt67jgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjQsInRpdGxlIjoi5biD5a6c5LiA5pelIiwiYm9keSI6IjEyLzA0IOmbt-enkeiOseWhlOWFrOWik-OAgembheWFuOS6uuS5puW6l-OAgeWco-eJueWwlOiOq-WRqOacq-W4gumbhu-8iOiLpemAouWRqOaXpe-8ieOAguaZmuS4iuWQg-S4gOmhv-mYv-agueW7t-eDpOiCie-8jOS4uuWQjumdouiIueS4iueahOS8memjn-WBmuW_g-eQhuW7uuiuvuOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6NSwidGl0bGUiOiLpo57kuYzmlq_mgIDkupoiLCJib2R5IjoiMTIvMDUg5LiJ5bCP5pe26aOe5Yiw5LiW55WM5pyA5Y2X56uv55qE5bCP5Z-O44CC5LiL5Y2I5Y-W6KOF5aSH44CB6YCb5riv5Y-j77yM55yL5q-U5qC85bCU5rW35bOh55qE6JC95pel44CC5pma5LiK5Yqh5b-F552h5aW94oCU4oCU5piO5aSp5LiK6Ii55bCx6KaB5byA5aeL5pmD5LqG44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5Ijo2LCJ0aXRsZSI6IueZu-iIuSIsImJvZHkiOiIxMi8wNiDkuIvljYjnmbvoiLnvvIzlronlhajmvJTnu4PjgIHlj5HlhrLplIvooaPjgILlh7rmuK_lkI7msr_mr5TmoLzlsJTmtbfls6HoiKrooYzvvIzkuKTlsrjmmK_pm6rlsbHlkozpuqblk7LkvKbkvIHpuYXjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjcsInRpdGxlIjoi5b636Zu35YWL5rW35bOhIMK3IOesrOS4gOWkqSIsImJvZHkiOiIxMi8wNyDov5vlhaXopb_po47luKbvvIzmtarpq5ggNOKAkzgg57Gz5piv5bi45oCB44CC5o-Q5YmNIDEg5bCP5pe25ZCD5pmV6Ii56I2v77yM5Yir562J6Zq-5Y-X5LqG5omN5ZCD44CC5LuK5aSp5Z-65pys6Lq6552A44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5Ijo4LCJ0aXRsZSI6IuW-t-mbt-WFi-a1t-WzoSDCtyDnrKzkuozlpKkiLCJib2R5IjoiMTIvMDgg5ZCO5Y2K56iL6YCa5bi45bmz57yT5Lqb44CC5ZCs5o6i6Zmp6Zif55qE6K6y5bqn77ya5Y2X5p6B5p2h57qm44CB6YeO55Sf5Yqo54mp6KeC5a-f5a6I5YiZ44CB5Yay6ZSL6Iif5LiK5LiL6Ii55rWB56iL44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5Ijo5LCJ0aXRsZSI6IuesrOS4gOasoeeZu-mZhiIsImJvZHkiOiIxMi8wOSDmuIXmmajnnIvliLDnrKzkuIDluqflhrDlsbHjgILnmbvpmYbngrnop4blpKnmsJTogIzlrprvvIzluLjop4HmmK_ljZforr7lvpflhbDnvqTlspvmiJbljZfmnoHljYrlspvopb_lsrjjgILmr4_mrKHnmbvpmYbliY3opoHov4fmtojmr5LmsaDvvIzpnovlupXmuIXmtIHpmLLlpJbmnaXniannp43jgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjEwLCJ0aXRsZSI6IuWNl-aegeWNiuWymyDCtyDnrKzkuozlpKkiLCJib2R5IjoiMTIvMTAg5Yay6ZSL6Iif5beh5ri455yL5Yaw5bGx5ZKM5bqn5aS06bK444CCMTIg5pyI5piv6Zi_5b635Yip5LyB6bmF44CB5be05biD5Lqa5LyB6bmF55qE5Lqn5LuU5pyf77yM5L-d5oyBIDUg57Gz5Lul5LiK6Led56a744CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5IjoxMSwidGl0bGUiOiLljZfmnoHljYrlspsgwrcg56ys5LiJ5aSpIiwiYm9keSI6IjEyLzExIOWPr-iDveWuieaOkueZu-mZhuixoeWym-aIluasuumql-Wym--8iOeBq-WxseWPo--8ieOAgumYsuaZkuWIq-ecgeKAlOKAlOWNl-aegeS4iuepuuiHreawp-epuua0nu-8jOmYtOWkqeS5n-S8muaZkuS8pOOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MTIsInRpdGxlIjoi5Y2X5p6B5Y2K5bKbIMK3IOesrOWbm-WkqSIsImJvZHkiOiIxMi8xMiDmnIDlkI7kuIDkuKrnmbvpmYbml6XjgILmg7Pot7PmsLTvvIhQb2xhciBQbHVuZ2XvvInnmoTku4rlpKnot7PvvIzmsLTmuKkgMOKAkzLCsEPjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjEzLCJ0aXRsZSI6Iui_lOeoiyDCtyDlvrfpm7flhYvmtbfls6EiLCJib2R5IjoiMTIvMTMg5o6J5aS05YyX5LiK44CC5pW055CG54Wn54mH77yM6Ii55LiK6YCa5bi45pyJ5pGE5b2x5YiG5Lqr5Lya44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5IjoxNCwidGl0bGUiOiLlvrfpm7flhYvmtbfls6Egwrcg56ys5LqM5aSpIiwiYm9keSI6IjEyLzE0IOe7p-e7rei_lOiIquOAgueVmeaEj-iIueS4iueahOe7k-i0puaIquatouaXtumXtO-8jOiIueS4iua2iOi0ueS4gOiIrOWPquaUtuS_oeeUqOWNoeOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MTUsInRpdGxlIjoi5LiL6Ii5IMK3IOWbnuW4g-WunCIsImJvZHkiOiIxMi8xNSDml6nkuIrlnKjkuYzmlq_mgIDkuprkuIvoiLnvvIznm7TmjqXpo57lm57luIPlrpzor7rmlq_oib7liKnmlq_jgILlvZPmmZrkvY_mnLrlnLrpmYTov5HvvIzmmI7lpKnplb_pgJTpo57ooYzjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjE2LCJ0aXRsZSI6IuW4g-WunCDihpIg6L2s5py6IiwiYm9keSI6IjEyLzE2IOeZveWkqeihpeS4quinie-8jOaZmuS4iui1t-mjnuOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MTcsInRpdGxlIjoi6aOe6KGM5LitIiwiYm9keSI6IjEyLzE3IOWPiOaYryAzMCDlsI_ml7bjgILov5nmrKHlvoDopb_po57vvIzml7blt67mmK_lgJLnnYDmnaXnmoTvvIzkvJrmr5TmnaXml7bovbvmnb7kuIDngrnjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjE4LCJ0aXRsZSI6IuaKtei-vuS4iua1tyDihpIg5p2t5beeIiwiYm9keSI6IjEyLzE4IOiQveWcsOa1puS4nO-8jOmrmOmTgeWbnuadreW3nuOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MTksInRpdGxlIjoi57yT5Yay5pelIiwiYm9keSI6IjEyLzE5IOS4jeWuieaOkuS7u-S9leS6i-OAguWAkuaXtuW3ruOAgea0l-iho-acjeOAgeaKiuijheWkh-aZvuW5suaUtuWlveOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MjAsInRpdGxlIjoi57yT5Yay5pelIiwiYm9keSI6IjEyLzIwIOeVmeS4gOWkqeW6lOWvueiIquePreW7tuivr-eahOS9memHj-OAguWmguaenOS4gOWIh-mhuuWIqe-8jOi_meWkqeWwseaYr-eZveeZveWkmuWHuuadpeeahOOAgiJ9LHsidHlwZSI6InRvZG8iLCJ0aXRsZSI6IuihjOWJjSA5MCDlpKnmuIXljZUiLCJpdGVtcyI6W3sidCI6IuehruiupOiIueelqOS4juiIseS9je-8iOWNl-aegeiIueS9jee0p-W8oO-8jOi2iuaXqei2iuWlve-8iSIsImRvbmUiOmZhbHNlfSx7InQiOiLlip7pmL_moLnlu7fnrb7or4HvvJrmnInnvo7nrb4v55Sz5qC5562-5Y-v6LWwIEFWRSDnlLXlrZDnrb7vvIzlkKbliJnpnIDnurjotKjnrb4iLCJkb25lIjpmYWxzZX0seyJ0Ijoi6K6i5Zu96ZmF5py656Wo77yI5Zu95YaF4oCU5biD5a6c4oCU5LmM5pav5oCA5Lqa5LiJ5q6177yJIiwiZG9uZSI6ZmFsc2V9LHsidCI6IuS5sOWMheWQq-WNl-aegeaVkeaPtOeahOaXheihjOS_nemZqSIsImRvbmUiOmZhbHNlfSx7InQiOiLkvZPmo4DvvIznoa7orqTlv4Pogrrog73pgILlupTpq5jnuqzluqboiKrooYwiLCJkb25lIjpmYWxzZX1dfSx7InR5cGUiOiJ0b2RvIiwidGl0bGUiOiLoo4XlpIfmuIXljZUiLCJpdGVtcyI6W3sidCI6IumYsuawtOWGsumUi-ihoyArIOmYsuawtOijpO-8iOeZu-mZhuW_hemhu--8jOiIueaWuemAmuW4uOWAn-WGsumUi-iho--8iSIsImRvbmUiOmZhbHNlfSx7InQiOiLkv53mmpblhoXooaPkuKTlpZfvvIjnvormr5vmiJbmipPnu5LvvIkiLCJkb25lIjpmYWxzZX0seyJ0Ijoi6Ziy5rC05omL5aWX5Lik5Ymv77yI5LiA5Ymv5rm_5LqG5o2i5Y-m5LiA5Ymv77yJIiwiZG9uZSI6ZmFsc2V9LHsidCI6IuaZleiIueiNr--8iOiMtuiLr-a1t-aYjuaIlui0tOeJh--8jOW-t-mbt-WFi-a1t-WzoeW_heWkh--8iSIsImRvbmUiOmZhbHNlfSx7InQiOiLpq5jlgI3pmLLmmZIgKyDloqjplZzvvIjpm6rpnaLlj43lsITmnoHlvLrvvIkiLCJkb25lIjpmYWxzZX0seyJ0Ijoi55u45py65aSH55So55S15rGg77yI5L2O5rip5o6J55S15b-r77yJIiwiZG9uZSI6ZmFsc2V9LHsidCI6IumYsuawtOiDjOWMheaIluW5suiii--8iOWGsumUi-iIn-S8mua6heawtO-8iSIsImRvbmUiOmZhbHNlfSx7InQiOiLovazmjaLmj5LlpLTvvIjpmL_moLnlu7cgSSDlnovvvIzoiLnkuIrlpJrkuLrmrKfmoIfvvIkiLCJkb25lIjpmYWxzZX1dfSx7InR5cGUiOiJ0ZXh0IiwidGl0bGUiOiLpooTnrpflj4LogIPvvIjku6Xlrp7pmYXor6Lku7fkuLrlh4bvvIkiLCJib2R5Ijoi6Ii556Wo5piv5aSn5aS077yaMTAg5aSp5Y2X5p6B6Iiq56iL5oyJ6Iix5L2N5LuOIDUg5LiH5YiwIDE1IOS4h-S6uuawkeW4geS4jeetie-8jOi2iuaXqeiuoui2iuS-v-WunO-8jOS4tOacn-eUqeS9jeWBtuWwlOiDveaNoeWIsOS9juS7t-S9huimgeiDveivtOi1sOWwsei1sOOAglxu5Zu96ZmF5py656WoIDEuNeKAkzIuNSDkuIfvvIjml7rlraPvvInjgILkuYzmlq_mgIDkuprlvoDov5TluIPlrpznuqYgMjAwMOKAkzQwMDAg5YWD44CCXG7nrb7or4HjgIHkv53pmanjgIHoo4XlpIflj6borqHjgIIifSx7InR5cGUiOiJsaW5rIiwidGl0bGUiOiJJQUFUTyDljZfmnoHml4XmuLjnu4Tnu4fogIXljY_kvJrvvIjmn6XoiLnlj6rotYTotKjvvIkiLCJ1cmwiOiJodHRwczovL2lhYXRvLm9yZy8ifV19XQ" data-btn="road">
+    <div class="cover" style="background:linear-gradient(155deg,#B6D3EC,#5E93C4)"><span>🧊</span></div>
+    <div class="body">
+      <div class="title">南极 20 天</div>
+      <div class="meta">12/01 – 12/20 · 杭州出发</div>
+      <div class="note">点「直接开始攻略」→ 落到路上</div>
+    </div>
+    <div class="arrow">›</div>
+  </button>
+  <button class="card" data-i="1" data-d="W3sidGl0bGUiOiLljJfmnoHot6jlubQgwrcg54m5572X5aeG55GfIDcg5aSpIiwiY2l0eSI6IueJuee9l-WnhueRnyIsInN0YXR1cyI6InBsYW5uaW5nIiwic3RhcnREYXRlIjoiMjAyNi0xMi0yOCIsImVuZERhdGUiOiIyMDI3LTAxLTAzIiwiYnJpZWYiOiLljJfnuqwgNjnCsCDnmoTmnoHlpJzot6jlubTjgILnmb3lpKnlj6rmnInkuKTlsI_ml7bok53osIPlhYnvvIzmmZrkuIrov73mnoHlhYnvvIzlnKjpm6rlnLDph4zlgJLmlbDjgIIiLCJibG9ja3MiOlt7InR5cGUiOiJ0ZXh0IiwidGl0bGUiOiLkuLrku4DkuYjpgInnibnnvZflp4bnkZ8iLCJib2R5IjoiMTIg5pyI5bqV5piv5p6B5aSc77yM5aSq6Ziz5LiN5LiK5Zyw5bmz57q_77yM5YWo5aSp5piv6JOd6LCD5pe25Yi74oCU4oCU5ouN54Wn5Y-N6ICM5q-U5p6B5pi85aW955yL44CCXG7lroPov5jlnKjmnoHlhYnmpK3lnIbluKbmraPkuIvmlrnvvIzln47luILovrnkuIrlsLHog73nnIvliLDmnoHlhYnvvIzkuI3nlKjmt7HlhaXojZLph47jgIJcbui3qOW5tOW9k-aZmua4r-WPo-acieeDn-iKse-8jOinhOaooeS4jeWkp-S9huawlOawm-Wkn-OAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MSwidGl0bGUiOiIxMi8yOCDkuIrmtbcg4oaSIOi1q-WwlOi-m-WfuiDihpIg54m5572X5aeG55GfIiwiYm9keSI6IuS4iuWNiOa1puS4nOWHuuWPke-8jOi1q-WwlOi-m-Wfuui9rOacuu-8jOaZmuS4iuWIsOeJuee9l-WnhueRn-OAguacuuWcuuWIsOW4guWMuiAxNSDliIbpkp_jgILnrKzkuIDmmZrliKvlronmjpLmtLvliqjvvIzlgJLml7blt67jgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjIsInRpdGxlIjoiMTIvMjkg5biC5Yy6ICsg57yG6L2mIiwiYm9keSI6IuS4iuWNiOWMl-aegeWkp-aVmeWggu-8jOS4i-WNiOWdkCBGamVsbGhlaXNlbiDnvIbovabliLAgU3RvcnN0ZWluZW4g6KeC5pmv5Y-w55yL6JOd6LCD5YWo5pmv44CC5pma5LiK56ys5LiA5qyh5p6B5YWJ6Lmy5a6I77yM5biC5Yy65YWJ5rGh5p-T5aSn77yM5bu66K6u5oql5Liq5bCP5Zui5Y676YOK5aSW44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5IjozLCJ0aXRsZSI6IjEyLzMwIOaegeWFiei_veeMjiIsImJvZHkiOiLmiqXkuIDkuKogNuKAkzgg5bCP5pe255qE5p6B5YWJ5Zui77yM5ZCR5a-85Lya5byA6L2m6Leo5aKD5Yiw6Iqs5YWw5oiW55Ge5YW45om-5pm056m644CC5bim5LiJ6ISa5p6277yM5b-r6ZeoIDXigJMxNSDnp5LjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjQsInRpdGxlIjoiMTIvMzEg6Leo5bm0IiwiYm9keSI6IueZveWkqeihpeinieOAguaZmuS4iuWcqOiAgeWfjuWQg-S4gOmhv--8jDIzOjMwIOWIsOa4r-WPo-etieeDn-iKseOAguaegeWknOmHjOeci-S4jeWIsOWkqumYs--8jOS9hueDn-iKseeFp-WcqOmbquS4iuW-iOS6ruOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6NSwidGl0bGUiOiIwMS8wMSDni5fmi4npm6rmqYciLCJib2R5Ijoi5YWD5pem5LiK5Y2I6Zuq5qmH54qs6JCl5Zyw77yM5Y2K5aSp6KGM56iL44CC5LiL5Y2I6JCo57Gz5biQ56-36YeM5Zad54Ot5rGk77yM5ZCs54mn5Lq66K6y6amv6bm_44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5Ijo2LCJ0aXRsZSI6IjAxLzAyIOi_lOeoiyIsImJvZHkiOiLkuIrljYjoh6rnlLHmtLvliqjvvIzkuK3ljYjpo57otavlsJTovpvln7rvvIzovazmnLrlm57kuIrmtbfjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjcsInRpdGxlIjoiMDEvMDMg5oq16L6-IiwiYm9keSI6IuS4i-WNiOiQveWcsOa1puS4nOOAguWbnuWbveWQjuS4pOWkqeWIq-WuieaOkumHjea0u-OAgiJ9LHsidHlwZSI6InRvZG8iLCJ0aXRsZSI6IuWHuuWPkeWJjSIsIml0ZW1zIjpbeyJ0Ijoi55Sz5qC5562-6K-B77yI5oyq5aiB77yJIiwiZG9uZSI6ZmFsc2V9LHsidCI6IuiuouaegeWFieWbou-8iDEyIOaciOW6leaXuuWto--8jOaPkOWJjeS4pOS4quaciO-8iSIsImRvbmUiOmZhbHNlfSx7InQiOiLnoa7orqTot6jlubTlvZPmmZrppJDljoXmmK_lkKbokKXkuJrvvIjljJfmrKflvojlpJrlupfmlL7lgYfvvIkiLCJkb25lIjpmYWxzZX0seyJ0Ijoi5Lmw6Ziy6aOO6Ziy5rC055qE5aSW5bGC77yM5YaF5bGC5oqT57uSICsg576K5q-bIiwiZG9uZSI6ZmFsc2V9LHsidCI6IuaaluWuneWuneOAgemdoue9qeOAgembqumVnCIsImRvbmUiOmZhbHNlfV19LHsidHlwZSI6InRleHQiLCJ0aXRsZSI6Iui_m-mYtumAiemhue-8muaWr-eTpuWwlOW3tCIsImJvZHkiOiLlpoLmnpzmg7PmiopcIuWMl-aegVwi5o6o5Yiw5p6B6Ie077yM5Y-v5Lul5YaN5Yqg5LiA5q616aOe5pyX5LyK5bCU5Z-O77yI5YyX57qsIDc4wrDvvInvvIwxMiDmnIjlupXmmK_lvbvlupXnmoTmnoHlpJzvvIzlhajlpKnmvIbpu5HvvIzpnaDlpLTnga_ooYzliqjjgIJcbuS9huiIquePreWwkeOAgeawlOa4qSAtMjDCsEMg5Lul5LiL44CB5Ye65Z-O5b-F6aG75bim5p6q6Ziy5YyX5p6B54aK77yMNyDlpKnooYznqIvloZ7kuI3kuIvjgILov5nmrKHlhYjorrDnnYDvvIzkuIvmrKHljZXni6zlronmjpLjgIIifV19XQ" data-btn="road">
+    <div class="cover" style="background:linear-gradient(155deg,#CBAEDB,#7C5FA0)"><span>⛩️</span></div>
+    <div class="body">
+      <div class="title">北极跨年 7 天</div>
+      <div class="meta">12/28 – 01/03 · 特罗姆瑟</div>
+      <div class="note">点「直接开始攻略」→ 落到路上</div>
+    </div>
+    <div class="arrow">›</div>
+  </button>
+  <button class="card" data-i="2" data-d="W3sidGl0bGUiOiLljYHkuIAgwrcg5LiJ5LqaIDcg5aSpIiwiY2l0eSI6IuS4ieS6miIsInN0YXR1cyI6InBsYW5uaW5nIiwic3RhcnREYXRlIjoiMjAyNi0xMC0wMSIsImVuZERhdGUiOiIyMDI2LTEwLTA3IiwiYnJpZWYiOiLkuprpvpnmub7ourrkuInlpKnvvIzonIjmlK_mtLLlspvkuIDlpKnvvIzlkI7mtbflhrLmtarkuKTlpKnjgILlm73luobkurrnoa7lrp7lpJrvvIzkvYbmtbfmmK_nnJ_nmoTlpb3jgIIiLCJibG9ja3MiOlt7InR5cGUiOiJ0ZXh0IiwidGl0bGUiOiLlpI3nm5giLCJib2R5Ijoi5LiD5aSp5LiL5p2l5pyA5YC855qE5Lik5Lu25LqL77ya5ZCO5rW35pep5LiK5YWt54K55LiL5rC077yM5rW36Z2i5Y-q5pyJ5Yeg5Liq5pys5Zyw5Lq677yb6JyI5pSv5rSy5bKb5r2c5rC055qE6IO96KeB5bqm5q-U5oOz6LGh5Lit5aW944CCXG7mnIDkuI3lgLznmoTvvJrkuprpvpnmub7nmoTnvZHnuqLppJDljoXvvIzmjpLpmJ_kuKTlsI_ml7bvvIzlkbPpgZPkuIDoiKzjgIJcbuWbveW6huacn-mXtOmFkuW6l-S7t-agvOe_u-WAje-8jOS4i-asoeiAg-iZkeWNgeS4gOWJjeS4gOWRqOacq-WOu-OAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6MSwidGl0bGUiOiIxMC8wMSDmirXovr4iLCJib2R5Ijoi5Yek5Yew5py65Zy66JC95Zyw77yM55u05o6l5omT6L2m5Yiw5Lqa6b6Z5rm-44CC5LiL5Y2I5rW36L655pWj5q2l77yM5pma5LiK5Zyo6YWS5bqX5ZCD44CC5Zu95bqG56ys5LiA5aSp6Lev5LiK5aC177yM5Yir5a6J5o6S6L-c55qE5Zyw5pa544CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5IjoyLCJ0aXRsZSI6IjEwLzAyIOS6mum-mea5vui6uuW5syIsImJvZHkiOiLkuIDmlbTlpKnlnKjmtbfovrnjgILnp5_kuKrourrmpIXvvIzku4DkuYjpg73kuI3lubLjgILlgo3mmZrljrvkuprpvpnmub7ng63luKblpKnloILmo67mnpflhazlm63otbDkuobkuIDlnIjjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjMsInRpdGxlIjoiMTAvMDMg6JyI5pSv5rSy5bKbIiwiYm9keSI6IuaXqeS4iuesrOS4gOePreiIueS4iuWym--8jOmBv-W8gOS6uua1geOAgua9nOawtOeci-WIsOS6huWwj-S4kemxvOWSjOePiueRmuOAguS4i-WNiOS4ieeCueWbnu-8jOmBv-W8gOi_lOeoi-mrmOWzsOOAgiJ9LHsidHlwZSI6ImRheSIsImRheSI6NCwidGl0bGUiOiIxMC8wNCDmtbfmo6Dmub4gKyDlhY3nqI7lupciLCJib2R5Ijoi5LiK5Y2I5o2i6YWS5bqX5Yiw5rW35qOg5rm-77yM5LiL5Y2I5YWN56iO5bqX44CC5Lq66Z2e5bi45aSa77yM5bu66K6u5o-Q5YmN5Zyo5bCP56iL5bqP6aKE57qm44CCIn0seyJ0eXBlIjoiZGF5IiwiZGF5Ijo1LCJ0aXRsZSI6IjEwLzA1IOWQjua1t-WGsua1qiIsImJvZHkiOiLml6nkuIrlha3ngrnkuIvmsLTvvIzmtarlvojmuKnmn5TvvIzpgILlkIjmlrDmiYvjgILmlZnnu4PkuIDlsI_ml7blsLHkvJrnq5nmnb_jgILkuIvljYjlnKjmnZHph4zllp3lkpbllaHjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjYsInRpdGxlIjoiMTAvMDYg5ZCO5rW3IMK3IOWNl-WxsSIsImJvZHkiOiLkuIrljYjlho3lhrLkuIDmrKHjgILkuIvljYjljrvljZflsbHnnIvmtbfkuIrop4Lpn7PvvIzot6_nqIvmnInngrnov5zvvIzmnaXlm57kuInlsI_ml7bjgIIifSx7InR5cGUiOiJkYXkiLCJkYXkiOjcsInRpdGxlIjoiMTAvMDcg6L-U56iLIiwiYm9keSI6IuS4iuWNiOaUtuaLvu-8jOS4reWNiOWOu-acuuWcuuOAguWbveW6huacgOWQjuS4gOWkqeacuuWcuuaOkumYn-W-iOmVv--8jOaPkOWJjeS4ieWwj-aXtuWIsOOAgiJ9LHsidHlwZSI6InRvZG8iLCJ0aXRsZSI6Iui_mei2n-WBmuWvueS6hueahCIsIml0ZW1zIjpbeyJ0Ijoi56ys5LiA54-t6Ii55LiK6JyI5pSv5rSy5bKbIiwiZG9uZSI6dHJ1ZX0seyJ0Ijoi5ZCO5rW35pep5LiK5YWt54K55LiL5rC0IiwiZG9uZSI6dHJ1ZX0seyJ0Ijoi5o-Q5YmN6K6i6YWS5bqX77yI5Zu95bqG5rqi5Lu35aSq6auY77yJIiwiZG9uZSI6dHJ1ZX0seyJ0Ijoi5bim5LqG5a-554-K55Ga5Y-L5aW955qE54mp55CG6Ziy5pmSIiwiZG9uZSI6dHJ1ZX1dfSx7InR5cGUiOiJ0b2RvIiwidGl0bGUiOiLkuIvmrKHopoHmlLnnmoQiLCJpdGVtcyI6W3sidCI6IumBv-W8gOWbveW6hu-8jOaPkOWJjeS4gOWRqOWOuyIsImRvbmUiOmZhbHNlfSx7InQiOiLkuprpvpnmub7nvZHnuqLppJDljoXkuI3nlKjnibnlnLDljrsiLCJkb25lIjpmYWxzZX0seyJ0Ijoi5Y2X5bGx6Lev56iL5aSq6L-c77yM5Y-v5Lul56CN5o6JIiwiZG9uZSI6ZmFsc2V9XX1dfV0" data-btn="road">
+    <div class="cover" style="background:linear-gradient(155deg,#A4DAE0,#3F8E9C)"><span>🏝️</span></div>
+    <div class="body">
+      <div class="title">三亚 7 天（已走过）</div>
+      <div class="meta">10/01 – 10/07 · 十一</div>
+      <div class="note">点「直接开始攻略」→ 自动落到回顾</div>
+    </div>
+    <div class="arrow">›</div>
+  </button>
+  <button class="card" data-i="3" data-d="W3sidGl0bGUiOiLlk4jlsJTmu6ggwrcg5Yaw6Zuq5aSn5LiW55WMIiwiY2l0eSI6IuWTiOWwlOa7qCIsInN0YXR1cyI6Indpc2giLCJicmllZiI6IjEyIOaciOW6leW8gOWbre-8jOWGsOmbleWknOmHjOaJk-eBr-acgOWlveeci-OAguS4reWkruWkp-ihl-eahOmprOi_reWwlOWGsOajjembtuS4i-S6jOWNgeW6puWQg-OAgiJ9LHsidGl0bGUiOiLpmL_li5Lms7Agwrcg56a-5pyo6Zuq5p2RIiwiY2l0eSI6IumYv-WLkuazsCIsInN0YXR1cyI6Indpc2giLCJicmllZiI6Iueyiembqua7kembqiArIOWbvueTpuS6uuacqOWxi--8jOa4heaZqOeCiueDn-WSjOmbvuWHh-OAguWGrOWkqei_m-Wxseimgeeci-i3r-WGteOAgiJ9LHsidGl0bGUiOiLms4nlt54gwrcg6J-z5Z-U57Cq6IqxIiwiY2l0eSI6IuazieW3niIsInN0YXR1cyI6Indpc2giLCJicmllZiI6Iuifs-WflOadkeaItOS4gOasoeewquiKseWbtO-8jOWGjeWOu-W8gOWFg-WvuuWSjOilv-ihl-OAguWNiuWfjueDn-eBq-WNiuWfjuS7meOAgiJ9LHsidGl0bGUiOiLmma_lvrfplYcgwrcg6Zm25rqq5bedIiwiY2l0eSI6IuaZr-W-t-mVhyIsInN0YXR1cyI6Indpc2giLCJicmllZiI6IuWRqOacq-W4gumbhua3mOaJi-S9nO-8jOaZmuS4iumAm-mZtua6quW3neOAguWPr-S7peiHquW3seaLieWdr-eDp-S4gOS4quadr-WtkOWvhOWbnuadpeOAgiJ9LHsidGl0bGUiOiLmt4TljZogwrcg5YWr5aSn5bGAIiwiY2l0eSI6Iua3hOWNmiIsInN0YXR1cyI6Indpc2giLCJicmllZiI6IuWwj-mlvOWNt-iRseWKoOiYuOaWme-8jOS4u-imgeWQg-S4queDremXueOAgumhuui3r-WOu-WRqOadkeWPpOWVhuWfjuOAgiJ9LHsidGl0bGUiOiLph43luoYgwrcg6ICB5Z-O5q2l6YGTIiwiY2l0eSI6IumHjeW6hiIsInN0YXR1cyI6Indpc2giLCJicmllZiI6IuS4jei1sOa0quW0lua0nuS4u-i3r--8jOi1sOWxseWfjuatpemBk-WSjOS4i-a1qemHjOOAguaZmuS4iuWcqOWNl-a7qOi3r-eci-WvueWyuOeBr-eBq-OAgiJ9XQ" data-btn="wish">
+    <div class="cover" style="background:linear-gradient(155deg,#F5CD96,#CE8845)"><span>📮</span></div>
+    <div class="body">
+      <div class="title">想去 · 6 个城市</div>
+      <div class="meta">哈尔滨 / 阿勒泰 / 泉州 / 景德镇 / 淄博 / 重庆</div>
+      <div class="note">点「先放进想去」→ 按区域自动分组</div>
+    </div>
+    <div class="arrow">›</div>
+  </button>
+  <div class="hint">
+    <b>说明</b><br>
+    ① 每个包都是独立的，可以只导你想要的那几个。<br>
+    ② 导入只新增，不会动你已有的路书。<br>
+    ③ 关掉这个页面后，数据不会消失——它已经在你手机里了。
+  </div>
+</div>
+<div class="done" id="done"></div>
+<script>
+  const q = location.search; // ?sharecode=...
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+    const d = card.dataset.d;
+    card.style.opacity = '.6';
+    setTimeout(() => {
+      location.href = './' + q + '#/add?d=' + d;
+    }, 120);
+  });
+</script>
+</body>
+</html>
